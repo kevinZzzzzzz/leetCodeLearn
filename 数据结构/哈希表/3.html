@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>判断质数</title>
+</head>
+<body>
+  <script>
+    // 封装函数：判断传入的数字num是否是质数
+    // 特点：只能被1和自身整除，即不能被2到num-1之间的数字整除
+    // 缺点：效率低
+    // function isPrime(num) {
+    //   for(let i = 2; i < num; i++) {
+    //     if (num % i === 0) return false
+    //   }
+    //   return true
+    // }
+
+    // 效率高函数
+    // 一个数若可以进行因数分解，那么分解时得到的两个数一定是一个小于等于sqrt(n)'n的开平方根'，一个一定大于等于sqrt(n)
+    function isPrime(num) {
+      // 获取num的平方根
+      let temp = parseInt(Math.sqrt(num))
+      for(let i = 2; i <= temp; i++) {
+        if (num % 2 === 0) return false
+      }
+      return true
+    }
+    console.log(isPrime(2))
+    console.log(isPrime(3))
+    console.log(isPrime(131))
+  </script>
+</body>
+</html>

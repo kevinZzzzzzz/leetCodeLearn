@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双向链表</title>
+</head>
+<body>
+<script>
+  function DoublyLinkedList() {
+    function Node(data) {
+      this.data = data
+      this.prev =  null
+      this.next = null
+    }
+    // 属性
+    this.head = null
+    this.tail = null
+    this.length = 0
+
+    DoublyLinkedList.prototype.append = function(data) {
+      let newNode = new Node(data)
+      // 判断是不是第一个节点
+      if(this.length === 0) {
+        this.head = newNode
+        this.tail = newNode
+      } else {
+        newNode.prev = this.tail
+        this.tail.next = newNode
+        this.tail = newNode
+      }
+      this.length += 1
+    }
+
+    // 将链表转成字符串形式
+    DoublyLinkedList.prototype.toString = function() {
+      return this.backwardString()
+    }
+    DoublyLinkedList.prototype.forwardString = function() {
+      let current = this.tail
+      let resultString = ''
+      while(current) {
+        resultString += current.data + ' '
+        current = current.prev
+      }
+      return resultString
+
+    }
+    DoublyLinkedList.prototype.backwardString = function() {
+      let current = this.head
+      let resultString = ''
+
+      while (current) {
+        resultString += current.data + ' '
+        current = current.next
+      }
+      return resultString
+    }
+
+    DoublyLinkedList.prototype.insert = function(position, data) {
+      // 越界判断
+      if (position < 0 || position > this.length) return false
+
+      let newNode = new Node(data)
+
+      // 判断是否为空
+      if (this.length === 0) {
+        this.head = newNode
+        this.tail = newNode
+      } else {
+        // 判断position是否为0
+        if (position === 0) {
+          this.head.prev = newNode
+          newNode.next = this.head
+          this.head = newNode
+        } else if (position === this.length) {
+          newNode.prev = this.tail
+          this.tail.next = newNode
+          this.tail = newNode
+        } else {
+          let idx = 0
+          let current = this.head
+          while (idx++ < position ) {
+            current = current.next
+          }
+          // 修改指针
+          newNode.next = current
+          newNode.prev = current.prev
+          current.prev.next = newNode
+          current.prev = newNode
+        }
+      }
+      this.length += 1
+      return true
+    }
+
+    DoublyLinkedList.prototype.get = function(position) {
+      // 越界判断
+      if (position < 0 || position >= this.length) return false
+      
+      let index = 0
+      let current = this.head
+      while(index++ < position) {
+        current = current.next
+      }
+      return current.data
+    }
+    DoublyLinkedList.prototype.indexOf = function(data) {
+      let current = this.head
+      let index = 0
+      while (current) {
+        if (current.data === data) return index
+        current = current.next
+        index += 1
+      }
+      return -1
+    }
+
+
+    DoublyLinkedList.prototype.update = function (position, element) {
+      if (position < 0 || position > this.length) return false
+
+      let current = this.head
+      let index = 0
+      while(index++ < position) {
+        current = current.next
+      }
+      current.data = element
+    }
+
+    DoublyLinkedList.prototype.removeAt = function(position) {
+      if (position < 0 || position >= this.length) return null
+      let current = this.head
+      if (this.length === 1) {
+        this.head = null
+        this.tail = null
+      } else {
+        // 判读是否删除第一个元素
+        if (position === 0) {
+          this.head.next.prev = null
+          this.head = this.head.next
+        } else if (position === this.length - 1 ){// 最后一个节点
+          current = this.tail
+          this.tail.prev.next = null
+          this.tail = this.tail.prev
+        } else {
+          let index = 0
+          while (index < position) {
+            current = current.next
+            index += 1
+          }
+          current.prev.next = current.next
+          current.next.prev = current.prev
+        }
+      }
+      this.length -= 1
+      return current.data
+    }
+
+    DoublyLinkedList.prototype.remove = function(element) {
+      let index = this.indexOf(element)
+
+      if (index < 0) return null
+
+      return this.removeAt(index)
+    }
+
+    DoublyLinkedList.prototype.isEmpty = function() {
+      return this.length === 0
+    }
+
+    DoublyLinkedList.prototype.size = function() {
+      return this.length
+    }
+
+    DoublyLinkedList.prototype.getFirst = function() {
+      return this.head
+    }
+
+    DoublyLinkedList.prototype.getTail = function() {
+      return this.tail
+    }
+  }
+
+  let list = new DoublyLinkedList()
+  list.append('abc')
+  list.append('abc')
+  list.append('abc')
+
+  console.log(list)
+  console.log(list.backwardString())
+  console.log(list.forwardString())
+
+  list.insert(0, 'aaa')
+  list.insert(2, 'bbb')
+  console.log(list.toString())
+
+  console.log(list.get(0))
+  console.log(list.get(3))
+
+  console.log(list.indexOf('abc'))
+  list.update(1, 'ggg')
+  console.log(list.toString())
+
+  console.log(list.removeAt(2))
+  console.log(list.toString())
+
+  console.log(list.remove('rrr'))
+  console.log(list.remove('ggg'))
+  console.log(list.toString())
+  // P40
+</script>
+</body>
+</html>

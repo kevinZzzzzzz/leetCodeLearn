@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>集合的扩展</title>
+</head>
+<body>
+  <script>
+
+    function Set() {
+      // 属性
+      this.items = {}
+      
+      // 方法
+      Set.prototype.add = function(value) {
+        // 判断当前集合中是否存在value
+        if (this.has(value)) return false
+        this.items[value] = value
+        return true
+      }
+      Set.prototype.has = function(value) {
+        return this.items.hasOwnProperty(value)
+      }
+      Set.prototype.remove = function(value) {
+        if (!this.has(value)) return false
+        delete this.items[value]
+        return true
+      }
+      Set.prototype.clear = function() {
+        this.items = {}
+        return true
+      }
+      Set.prototype.size = function() {
+        return Object.keys(this.items).length
+      }
+      Set.prototype.values = function() {
+        return Object.keys(this.items)
+      }
+
+      // 集合的操作
+      Set.prototype.union = function(otherSet) {
+        let unionSet = new Set()
+        let values = this.values()
+        for(let i in values) {
+          unionSet.add(values[i])
+        }
+
+        values = otherSet.values()
+        for(let y in values) {
+          unionSet.add(values[y])
+        }
+        return unionSet
+      }
+
+      Set.prototype.intersection = function(otherSet) {
+        let intersec = new Set()
+        let values = this.values()
+        for(let i in values) {
+          if (otherSet.has(values[i])) {
+            intersec.add(values[i])
+          }
+        }
+        return intersec
+      }
+
+      Set.prototype.difference = function(otherSet) {
+        let diff = new Set()
+        let values = this.values()
+        for(let i in values) {
+          if (!otherSet.has(values[i])) {
+            diff.add(values[i])
+          }
+        }
+        return diff
+      }
+
+      Set.prototype.subset = function(otherSet) {
+        let values = this.values()
+        for (let i in values) {
+          if (!otherSet.has(values[i])) return false
+        }
+        return true
+      }
+    }
+
+    let setA = new Set()
+    setA.add('aaa')
+    setA.add('bbb')
+    setA.add('vvv')
+    setA.add('ccc')
+    let setB = new Set()
+    setB.add('aaa')
+    setB.add('bbb')
+    setB.add('sss')
+    setB.add('ddd')
+    console.log(setA.values())
+    console.log(setB.values())
+
+    let setC = setA.union(setB)
+    console.log(setC.values())
+
+    let setD = setA.intersection(setB)
+    console.log(setD.values())
+
+    let setE = setA.difference(setB)
+    console.log(setE.values())
+
+    let setF = new Set()
+    setF.add('aaa')
+    setF.add('bbb')
+    setF.add('vvv')
+    setF.add('fff')
+    console.log(setF.subset(setA))
+
+
+    // p65
+  </script>
+</body>
+</html>

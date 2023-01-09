@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>集合</title>
+  <!-- 1、无序 2、不可重复 -->
+</head>
+<body>
+  <script>
+    function Set() {
+      // 属性
+      this.items = {}
+      
+      // 方法
+      Set.prototype.add = function(value) {
+        // 判断当前集合中是否存在value
+        if (this.has(value)) return false
+        this.items[value] = value
+        return true
+      }
+      Set.prototype.has = function(value) {
+        return this.items.hasOwnProperty(value)
+      }
+      Set.prototype.remove = function(value) {
+        if (!this.has(value)) return false
+        delete this.items[value]
+        return true
+      }
+    }
+    Set.prototype.clear = function() {
+      this.items = {}
+      return true
+    }
+    Set.prototype.size = function() {
+      return Object.keys(this.items).length
+    }
+    Set.prototype.values = function() {
+      return Object.keys(this.items)
+    }
+
+    
+    let set = new Set()
+    set.add('aaa')
+    set.add('aaa')
+    set.add('bbb')
+    set.add('vvv')
+    set.add('ccc')
+    console.log(set)
+    console.log(set.values())
+
+    set.remove('vvv')
+    set.remove('eee')
+    console.log(set);
+
+    console.log(set.has('aaa'));
+    console.log(set.has('sds'));
+    console.log(set.size());
+    set.clear()
+    console.log(set);
+  </script>
+
+  <!-- p46 -->
+</body>
+</html>

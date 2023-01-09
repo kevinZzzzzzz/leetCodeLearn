@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>单向链表</title>
+</head>
+<body>
+  <script>
+    function LinkedList() {
+      // 内部类： 节点类
+      function Node(data) {
+        this.data = data
+        this.next = null
+      }
+
+      this.head = null
+      this.length = 0
+
+      LinkedList.prototype.append = function (data) {
+        let newNode = new Node(data)
+        // 判断是否添加的第一个节点
+        if (!this.length) {
+          this.head = newNode
+        } else {
+          let current = this.head
+          while(current.next) {
+            current = current.next
+          }
+          current.next = newNode
+        }
+        this.length += 1
+      }
+      LinkedList.prototype.toString = function() {
+        //  1.定义变量
+        let current = this.head
+        let listString = ''
+
+        while(current) {
+          listString += current.data + '、'
+          current = current.next
+        }
+        return listString
+      }
+      LinkedList.prototype.insert = function(position, data) {
+        //  1.对position进行越界判断
+        if (position < 0 || position > this.length) return false
+        let newNode = new Node(data)
+
+        // 判断插入的元素是否是第一个
+        if(position === 0) {
+          newNode.next = this.head
+          this.head = newNode
+        } else {
+          let idx = 0
+          let current = this.head
+          let previous = null
+          while(idx++ < position) {
+            previous = current
+            current = current.next
+          }
+          newNode.next = current
+          previous.next = newNode
+        }
+        this.length += 1
+        return true
+      }
+      LinkedList.prototype.get = function(position) {
+        if (position < 0 || position >= this.length) return null
+        let current = this.head
+        let index = 0
+        while(index++ < position) {
+          current = current.next
+        }
+        return current.data
+      }
+      LinkedList.prototype.indexOf = function(data) {
+        let current = this.head
+        let index = 0
+        
+        while(current) {
+          if (current.data === data) {
+            return index
+          }
+          index += 1
+          current = current.next
+        }
+        // 没有找到返回-1
+        return -1
+      }
+      LinkedList.prototype.update = function(position, newData) {
+        if (position < 0 || position >= this.length) return null
+
+        let current = this.head
+        let index = 0
+        while(index++ < position) {
+          current = current.next
+        }
+        current.data = newData
+        return linkedList
+      }
+      LinkedList.prototype.removeAt = function(position) {
+        if (position < 0 || position >= this.length) return null
+        let current = this.head
+        if (position === 0) {
+          this.head = current.next
+        } else {
+          let index = 0
+          let previous = null
+          while (index++ < position) {
+            previous = current
+            current = current.next
+          }
+          previous.next = current.next
+        }
+        this.length--
+        return current.data
+      }
+      LinkedList.prototype.remove = function(ele) {
+        let position = this.indexOf(ele)
+        return this.removeAt(position)
+      }
+      LinkedList.prototype.isEmpty = function() {
+        return this.length === 0
+      }
+      LinkedList.prototype.size = function() {
+        return this.length
+      }
+    }
+    let linkedList = new LinkedList()
+    linkedList.append('hahah')
+    linkedList.append('heheheh')
+    linkedList.append('dedede')
+    console.log(linkedList)
+    
+    linkedList.insert( 2,'gegegeg')
+    console.log(linkedList.toString())
+    console.log(linkedList.get(2))
+    console.log(linkedList.indexOf('hahah'))
+    console.log(linkedList.update(1, 'memeememme').toString())
+    console.log(linkedList.removeAt(1))
+    console.log(linkedList.remove('gegegeg'))
+    console.log(linkedList.isEmpty())
+    console.log(linkedList.size(), linkedList)
+    // p29 -> 30
+  </script>
+</body>
+</html>

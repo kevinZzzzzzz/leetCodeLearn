@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>栈的封装</title>
+</head>
+<body>
+  <script>
+    function Stack() {
+      this.items = []
+      // 栈的相关操作
+      // 1、将元素压入栈内
+      Stack.prototype.push = function(ele) {
+        this.items.push(ele)
+      }
+      // 2、从站内取出元素
+      Stack.prototype.pop = function() {
+        return this.items.pop()
+      }
+      // 3、查看栈顶元素
+      Stack.prototype.peek = function() {
+        return this.items[this.items.length - 1]
+      }
+      // 4、判断栈中元素是否为空
+      Stack.prototype.isEmpty = function() {
+        return this.items.length === 0
+      }
+      // 5、获取栈中元素的个数
+      Stack.prototype.size = function() {
+        return this.items.length
+      }
+      // 6、toString方法
+      Stack.prototype.toString  = function() {
+        let resultString = ''
+        for (let i = 0; i < this.items.length; i++) {
+          resultString += this.items[i] + ''
+        } 
+        return resultString 
+      }
+    }
+
+    // let s = new Stack()
+    // s.push(1)
+    // s.push(1)
+    // s.push(1)
+    // s.push(1)
+    // alert(s.size())
+
+
+    function dec2bin(dec) {
+      let n = new Stack()
+      while(dec > 0) {
+        n.push(dec % 2)
+        dec = Math.floor(dec / 2)
+      }
+      let result = ''
+      // 法1
+      // for (let i = s.items.length - 1; i >=  0; i--) {
+      //   result += s.items[i] + ''
+      // }
+      // 法2
+      // let h = n.size()
+      // for (let i = 0; i < h; i++) {
+      //   result += n.pop() + ''
+      // }
+      // 法3
+      while(!n.isEmpty()) {
+        result += n.pop() + ''
+      }
+      return result
+    }
+    alert(dec2bin(100))
+    alert(dec2bin(10))
+    alert(dec2bin(100000))
+  </script>
+</body>
+</html>
