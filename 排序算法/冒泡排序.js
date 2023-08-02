@@ -12,3 +12,13 @@ let BobbleSort = function (arr, flag = 0) {
 
 let arr = [2, 9, 6, 7, 4, 3, 1, 7]
 console.log(BobbleSort(arr, 1))
+let BobbleSort2 = function(arr) {
+  let len = arr.length
+  for (let i = len - 1; i >= 0; i--) {
+    for (let j = 0; j < i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+      }
+    }
+  }
+}
