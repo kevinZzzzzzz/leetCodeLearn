@@ -11,7 +11,6 @@
  * @return {number}
  */
 var strStr = function(haystack, needle) {
-  // if (!haystack.includes(needle)) return -1
   let x = 0, y = needle.length
   let temp = ''
   let flag = false
