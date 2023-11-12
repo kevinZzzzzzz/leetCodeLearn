@@ -22,4 +22,3 @@ var plusOne = function(digits) {
 
 };
 // @lc code=end
-
