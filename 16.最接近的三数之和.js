@@ -11,8 +11,7 @@
  * @return {number}
  */
 var threeSumClosest = function(nums, target) {
-  let res = 0
-  let dec = 0
+  let res = Number.MAX_SAFE_INTEGER // 最大的有效数
   let len = nums.length
   if (nums == null || len < 3) return res
 
@@ -21,9 +20,17 @@ var threeSumClosest = function(nums, target) {
     let L = i + 1;
     let R = len - 1;
     while (L < R) {
-      if ( Math.abs((nums[i] + nums[L] + nums[R]) - target) < dec ) {
-        res = (nums[i] + nums[L] + nums[R])
-        dec = Math.abs((nums[i] + nums[L] + nums[R]) - target)
+      let sum = nums[i] + nums[L] + nums[R]
+      if (Math.abs(sum - target) < Math.abs(res - target)) {
+        res = sum
+      }
+      // 跟目标值比较往中间走
+      if (sum < target) {
+        L++
+      } else if (sum > target) {
+        R--
+      } else {
+        return sum
       }
     }
 

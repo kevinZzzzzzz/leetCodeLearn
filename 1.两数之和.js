@@ -10,11 +10,11 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target) {
+var twoSum = function (nums, target) {
     let idx1 = 0
     let idx2 = 0
     nums.forEach((e, idx) => {
-        for(let i = idx + 1; i< nums.length; i++) {
+        for (let i = idx + 1; i < nums.length; i++) {
             if (e + nums[i] === target) {
                 idx1 = idx
                 idx2 = i

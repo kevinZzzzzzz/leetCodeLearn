@@ -16,7 +16,6 @@ var findMedianSortedArrays = function(nums1, nums2) {
   let len = c.length
   let center = null
   if (!(len % 2)) {
-    console.log(c[len / 2], c[(len / 2) + 1])
     center = (c[(len / 2) - 1] + c[len / 2]) / 2
   } else {
     center = (c[Math.floor(len / 2)])
