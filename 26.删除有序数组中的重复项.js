@@ -20,7 +20,6 @@ var removeDuplicates = function(nums) {
     }
     j++
   }
-  console.log(nums)
   return i + 1
 };
 // @lc code=end

@@ -11,8 +11,6 @@
  * @return {number[][]}
  */
 var fourSum = function(nums, target) {
-  if (nums.length < 4) return res
-
   nums.sort((a, b) => a - b)
   function nSumTarget(nums, n, start, target) {
     let res = []
@@ -22,14 +20,16 @@ var fourSum = function(nums, target) {
       let L = start, R = len - 1
       while (L < R) {
         let sum = nums[L] + nums[R]
+        let lNum = nums[L]
+        let rNum = nums[R]
         if (sum < target) {
-          while (L < R && nums[L] === nums[L + 1]) L++
+          while (L < R && nums[L] == lNum) L++
         } else if (sum > target) {
-          while (L < R && nums[R] === nums[R - 1]) R--
+          while (L < R && nums[R] == rNum) R--
         } else {
-          res.push([L, R])
-          while (L < R && nums[L] === nums[L + 1]) L++
-          while (L < R && nums[R] === nums[R - 1]) R--
+          res.push([lNum, rNum])
+          while (L < R && nums[L] == lNum) L++
+          while (L < R && nums[R] == rNum) R--
         }
       }
     } else {
@@ -39,7 +39,7 @@ var fourSum = function(nums, target) {
           arr.push(nums[i])
           res.push(arr)
         }
-        while (i < len - 1 && nums[i] === nums[i + 1]) i++
+        while (i < len - 1 && nums[i] == nums[i + 1]) i++
       }
     }
     return res

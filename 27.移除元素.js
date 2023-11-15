@@ -22,6 +22,7 @@ var removeElement = function(nums, val) {
     }
     j++
   }
+  console.log(nums)
   return i
 };
 // @lc code=end
