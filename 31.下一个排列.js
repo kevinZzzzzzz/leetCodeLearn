@@ -32,7 +32,7 @@ var nextPermutation = function(nums) {
     // 交换数字
     [nums[l], nums[r]] = [nums[r], nums[l]]
   }
-  // 交换完后将nums[l]后面的数做一个升序的处理，以求得所谓与原数 [较大] 的数
+  // 交换完后将nums[l]后面的数做一个升序的处理，以求得所谓与原数[较大]的数
   let s = l + 1
   e = len - 1
   while(s < e) {
