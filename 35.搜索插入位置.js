@@ -11,14 +11,18 @@
  * @return {number}
  */
 var searchInsert = function(nums, target) {
-  return computed(nums, target, 0, nums.length - 1)
+  let left = 0, mid, right = nums.length
+  while (left < right) {
+    mid = left + ((right - left) >> 1)
+    if (nums[mid] === target) {
+      right = mid
+    } else if (nums[mid] > target) {
+      right = mid
+    } else {
+      left = mid + 1
+    }
+  }
+  return left
 };
-function computed(array, target, start, end) {
-  if (start > end) return start
-  const mid = Math.floor((start + end) / 2)
-  if (array[mid] === target) return mid
-  if (array[mid] > target) return computed(array, target, 0, mid - 1)
-  if (array[mid] < target) return computed(array, target, mid + 1, end)
-}
 // @lc code=end
 
