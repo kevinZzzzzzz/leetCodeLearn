@@ -6,7 +6,7 @@
 
 // @lc code=start
 /**
- * @param {number[]} nums 
+ * @param {number[]} nums
  * @param {number} target
  * @return {number}
  */
