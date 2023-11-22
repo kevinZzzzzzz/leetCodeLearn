@@ -1,7 +1,5 @@
 
 /*
- * @lc app=leetcode.cn id=39 lang=javascript
- *
  * [39] 组合总和
  */
 var combinationSum = function(candidates, target) {
@@ -17,7 +15,6 @@ var combinationSum = function(candidates, target) {
     for (let i = start; i < candidates.length; i++) {
       temp.push(candidates[i])
       dfs(i, temp, sum + candidates[i])
-      console.log(temp, i, '===========')
       temp.pop()
     }
   }
@@ -25,4 +22,4 @@ var combinationSum = function(candidates, target) {
   console.log(res, '-------------------')
   return res
 };
-combinationSum([2,3,5], 8)
+combinationSum([10,1,2,7,6,1,5], 8)
