@@ -25,7 +25,7 @@ var combinationSum2 = function(candidates, target) {
       // 从起始项开始，后面一旦出现重复的项直接跳过
       if (i - 1 >= start && candidates[i - 1] === candidates[i]) continue
       temp.push(candidates[i])
-      // 当前选择的数字不能和下一个选择的数字重复，给子递归传i+1，避免与当前选的i重复
+      // 因为每个数字在每个组合中只能使用 一次 ，给子递归传i+1，避免与当前选的i重复
       dfs(i + 1, temp, sum + candidates[i])
       temp.pop()
     }
