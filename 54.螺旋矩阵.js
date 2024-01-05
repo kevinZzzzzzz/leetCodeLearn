@@ -33,7 +33,7 @@ var spiralOrder = function(matrix) {
     right--
     left++
   }
-  if (top == bottom) { // 剩下最后一行 从左至右
+  if (top === bottom) { // 剩下最后一行 从左至右
     for (let i = left; i <= right; i++) {
       res.push(matrix[top][i])
     }
