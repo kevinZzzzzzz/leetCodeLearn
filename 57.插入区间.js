@@ -27,7 +27,7 @@ function insert(intervals, newInterval) {
   }
   res.push(newInterval); // 循环结束后，兰区间为合并后的区间，推入res
 
-  while (i < len) {                 // 在蓝右边，没重叠的区间
+  while (i < len) { // 在蓝右边，没重叠的区间
     res.push(intervals[i]);
     i++;
   }
