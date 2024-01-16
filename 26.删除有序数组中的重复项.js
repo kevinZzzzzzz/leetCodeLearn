@@ -11,16 +11,23 @@
  */
 var removeDuplicates = function(nums) {
   if (!nums || !nums.length) return 0
-  let i = 0
-  let j = 1
-  while(j < nums.length) {
-    if (nums[i] !== nums[j]) {
-      nums[i+1] = nums[j]
-      i++
+  // let i = 0
+  // let j = 1
+  // while(j < nums.length) {
+  //   if (nums[i] !== nums[j]) {
+  //     nums[i+1] = nums[j]
+  //     i++
+  //   }
+  //   j++
+  // }
+  // return i + 1
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] === nums[i-1]) {
+      nums.splice(i, 1)
+      i--
     }
-    j++
   }
-  return i + 1
+  return nums.length
 };
 // @lc code=end
 
