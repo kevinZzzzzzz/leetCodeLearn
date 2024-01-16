@@ -10,17 +10,10 @@
  * @return {number}
  */
 var removeDuplicates = function(nums) {
-  let len = 0
-  let j = 0
-  for (let i = 1; i < nums.length; i++) {
-    if (nums[i - 1] == nums[i]) {
-      if (j < 1) {
-        j++
-        continue
-      } else {
-        nums.splice(i, 1)
-        j = 0
-      }
+  for (let i = 2; i < nums.length; i++) {
+    if (nums[i - 2] == nums[i]) {
+      nums.splice(i, 1)
+      i--
     }
   }
   return nums.length;
