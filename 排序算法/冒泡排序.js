@@ -1,3 +1,8 @@
+/* 
+  冒泡排序：
+    原理：升序每次遍历将最大的往前排
+         倒序每次遍历将最小的往前排
+*/
 let BobbleSort = function (arr, flag = 0) {
   let len = arr.length
   for (let i = 0; i < len - 1; i++) { // 设置指针一的边界

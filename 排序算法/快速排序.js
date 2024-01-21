@@ -21,3 +21,7 @@ const quickSort = function(arr) {
   }
   return quickSort(left).concat([middle], quickSort(right))
 }
+let arr = [2, 9, 6, 7, 4, 3, 1, 7]
+console.log(quickSort(arr))
+
+console.log(arr.concat([1,2,3,4], [24,35]))
