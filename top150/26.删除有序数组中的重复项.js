@@ -11,7 +11,7 @@ const removeDuplicates = (nums) => {
   for (let i = 1; i < nums.length; i++) {
     if (nums[i] === nums[i - 1]) {
       nums.splice(i, 1)
-      i-- // ！关键没删除一位对应的指针需要往前挪一位
+      i-- // ！关键每删除一位对应的指针需要往前挪一位
     }
   }
   return nums.length

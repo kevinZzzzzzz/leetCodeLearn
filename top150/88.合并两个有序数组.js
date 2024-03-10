@@ -9,6 +9,8 @@ var merge = function(num1, m, num2, n) {
   const sorted = new Array(m + n).fill(0)
   let cur // 当前值
   while (i < m || j < n) {
+    console.log(`i：${i}， j：${j}`)
+    console.log(`num1[i]：${num1[i]}， num2[j]：${num2[j]}`)
     if (i === m) {
       cur = num2[j++]
     } else if (j === n) {
@@ -18,14 +20,16 @@ var merge = function(num1, m, num2, n) {
     } else {
       cur = num2[j++]
     }
+    console.log(`cur：${cur}`)
+    console.log('=======<>>>>>>')
     sorted[i + j - 1] = cur
   }
   for (let k = 0; k < m + n; k++) {
     num1[k] = sorted[k]
   }
-  console.log(num1)
+  // console.log(num1)
 }
 
 merge([1,2,3,0,0,0], 3, [2,5,6], 3)
-merge([1], 1, [], 0)
-merge([0], 0, [1], 1)
+// merge([1], 1, [], 0)
+// merge([0], 0, [1], 1)
