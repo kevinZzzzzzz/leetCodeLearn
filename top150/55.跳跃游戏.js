@@ -17,8 +17,9 @@ var canJump = function(nums) {
   let len = nums.length
   let farthest = 0
   for (let i = 0; i < len; i++) {
-    farthest = Math.max(farthest, i + nums[i]) // 计算当前一步最远可以去到哪个位置
+    farthest = Math.max(farthest, i + nums[i]) // 计算当前一步最远可达哪个位置
+    console.log(farthest)
   }
   return farthest >= len - 1
 };
-console.log(canJump([2,3,1,1,4]))
+console.log(canJump([2,3,1,0,4]))
