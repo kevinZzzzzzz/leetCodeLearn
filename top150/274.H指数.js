@@ -11,6 +11,33 @@
   输入：citations = [1,3,1]
   输出：1
 */
+// 思路1：排序法，将数组从大到小排序，每当找到大于当前h指数的论文，h+1, 最后返回h
 var hIndex = function(citations) {
-  
+  citations.sort((a, b)=> a - b ) // 从小往大排序
+  let h = 0
+  let last = citations.length - 1
+  while (last >= 0 && citations[last] > h) {
+    h++
+    last--
+  }
+  return h
 };
+console.log(hIndex([3,0,6,1,5]))
+
+// 二分法
+var hIndex1 = function(citations) {
+  let left = 0, right = citations.length
+  while (left < right) {
+    let mid = (left + right) >> 1
+    let cur = 0
+    for (let v of citations) {
+      if (v >= mid ) cur++
+    }
+    if (cur >= mid) {
+      left = mid
+    } else {
+      right = mid - 1
+    }
+  }
+  return left
+}
