@@ -18,7 +18,7 @@ var productExceptSelf = function(nums) {
   let len = nums.length
   let answer = new Array(len)
   answer[0] = 1
-  for (let i = 1; i < len; i ++) { // 该元素乘以左边的乘积
+  for (let i = 1; i < len; i++) { // 该元素乘以左边的乘积
     answer[i] = answer[i - 1] * nums[i - 1]
   }
   let R = 1
