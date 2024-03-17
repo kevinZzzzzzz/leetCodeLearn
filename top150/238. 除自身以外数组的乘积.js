@@ -21,11 +21,13 @@ var productExceptSelf = function(nums) {
   for (let i = 1; i < len; i++) { // 该元素乘以左边的乘积
     answer[i] = answer[i - 1] * nums[i - 1]
   }
+  console.log(answer, 'answer1')
   let R = 1
   for (let i = len - 1; i >= 0; i--) { // 该元素乘以右边的乘积
     answer[i] = answer[i] * R
     R = R * nums[i]
   }
+  console.log(answer, 'answer2')
   return answer
 };
-console.log(productExceptSelf([-1,1,0,-3,3]))
+console.log(productExceptSelf([1,2,3,4]))
