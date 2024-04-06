@@ -15,11 +15,11 @@
 */
 var canJump = function(nums) {
   let len = nums.length
-  let farthest = 0
-  for (let i = 0; i < len; i++) {
+  let farthest = 0 // 用于记录最远可达距离
+  for (let i = 0; i < len - 1; i++) {
     farthest = Math.max(farthest, i + nums[i]) // 计算当前一步最远可达哪个位置
     console.log(farthest)
   }
-  return farthest >= len - 1
+  return farthest >= len - 1 // 判断是否能够到达最后一位
 };
-console.log(canJump([2,3,1,0,4]))
+console.log(canJump([2,3,1,1,4]))

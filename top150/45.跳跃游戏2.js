@@ -22,7 +22,7 @@
  * 在的位置，以此类推，直到找到数组的开始位置。
  */
 var jump = function(nums) {
-  let lastLen = nums.length - 1
+  let lastLen = nums.length - 1 // 需要去到的最远
   let step = 0
   while(lastLen > 0) {
     for (let i = 0; i < lastLen; i++) {
@@ -35,4 +35,17 @@ var jump = function(nums) {
   }
   return step
 };
+// const jump = (nums) => {
+//   let max = 0 // 目前可达最远的距离
+//   let end = 0 // 可达范围右边界
+//   let step = 0
+//   for (let i = 0; i < nums.length - 1; i++) {
+//     max = Math.max(max, nums[i] + i)
+//     if (i == end) { // 到达上一次的右边界
+//       end = max // 目前能跳到的最远位置变成了下次起跳位置的右边界
+//       step++
+//     }
+//   }
+//   return step
+// }
 console.log(jump([2,3,1,1,4]))
