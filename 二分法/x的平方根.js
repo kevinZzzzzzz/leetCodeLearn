@@ -25,3 +25,9 @@ function mySqrt2(x) {
   return ans
 }
 console.log(mySqrt2(2))
+
+console.log(Math.sqrt(2))
+
+console.log(2 ** 0.5)
+
+console.log(2 ** (1/2))
