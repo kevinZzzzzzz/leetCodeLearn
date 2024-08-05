@@ -14,5 +14,5 @@ const removeDuplicates = (nums) => {
       i--;
     }
   }
-  return nums.length
-}
+  return nums.length;
+};

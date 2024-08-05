@@ -1,5 +1,6 @@
 /* 
   122 买卖股票的最佳时机2
+    数组 动态规划
     在每一天，你可以决定是否购买和/或出售股票。你在任何时候 最多 只能持有 一股 股票。你也可以先购买，然后在 同一天 出售。返回 你能获得的 最大利润 
     
     输入：prices = [7,1,5,3,6,4]
@@ -8,16 +9,13 @@
         随后，在第 4 天（股票价格 = 3）的时候买入，在第 5 天（股票价格 = 6）的时候卖出, 这笔交易所能获得利润 = 6 - 3 = 3 。
         总利润为 4 + 3 = 7 。
  */
-var maxProfit = function(prices) {
-  let benefit = 0
+var maxProfit = function (prices) {
+  let benefit = 0;
   for (let i = 1; i < prices.length; i++) {
-    if (prices[i] > prices[i - 1]) {
-      console.log( Math.max(0, prices[i] - prices[i - 1]))
-    }
-    benefit += Math.max(0, prices[i] - prices[i - 1])
+    benefit += Math.max(0, prices[i] - prices[i - 1]);
   }
-  return benefit
+  return benefit;
 };
-maxProfit([7,1,5,3,6,4])
-console.log('==============')
-maxProfit([7,1,5,3,4,6])
+maxProfit([7, 1, 5, 3, 6, 4]);
+console.log("==============");
+maxProfit([7, 1, 5, 3, 4, 6]);

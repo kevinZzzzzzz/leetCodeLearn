@@ -17,22 +17,22 @@
     反转前 k 个数字后 : 5 6 7 4 3 2 1
     反转后 n-k 个数字后 : 5 6 7 1 2 3 4 --> 结果
 */
-var rotate = function(nums, k) {
+var rotate = function (nums, k) {
   // 反转元素
   const reverse = (arr, start, end) => {
     while (start < end) {
-      [arr[end], arr[start]] = [arr[start], arr[end]]
-      start++
-      end--
+      [arr[end], arr[start]] = [arr[start], arr[end]];
+      start++;
+      end--;
     }
-  }
+  };
   // 将 k 调整为不超过数组长度的值
-  k = k % nums.length
+  k = k % nums.length;
   // 将所有元素反转
-  reverse(nums, 0, nums.length - 1)
+  reverse(nums, 0, nums.length - 1);
   // 将前k个元素反转
-  reverse(nums, 0, k - 1)
+  reverse(nums, 0, k - 1);
   // 将后面n - k个元素反转
-  reverse(nums, k, nums.length - 1)
+  reverse(nums, k, nums.length - 1);
 };
-rotate([1,2,3,4,5,6,7], 3)
+rotate([1, 2, 3, 4, 5, 6, 7], 3);

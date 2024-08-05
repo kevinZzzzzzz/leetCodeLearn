@@ -1,4 +1,4 @@
-/* 
+/* 贪心 数组 动态规划
   给定一个长度为 n 的 0 索引整数数组 nums。初始位置为 nums[0]。
   每个元素 nums[i] 表示从索引 i 向前跳转的最大长度。换句话说，如果你在 nums[i] 处，你可以跳转到任意 nums[i + j] 处:
     0 <= j <= nums[i] 
@@ -21,19 +21,19 @@
  * ，选择第一个满足要求的位置。找到最后一步跳跃前所在的位置之后，我们继续贪心地寻找倒数第二步跳跃前所
  * 在的位置，以此类推，直到找到数组的开始位置。
  */
-var jump = function(nums) {
-  let lastLen = nums.length - 1 // 需要去到的最远
-  let step = 0
-  while(lastLen > 0) {
+var jump = function (nums) {
+  let lastLen = nums.length - 1; // 需要去到的最远
+  let step = 0;
+  while (lastLen > 0) {
     for (let i = 0; i < lastLen; i++) {
       if (nums[i] + i >= lastLen) {
-        lastLen = i
-        step++
-        break
+        lastLen = i;
+        step++;
+        break;
       }
     }
   }
-  return step
+  return step;
 };
 // const jump = (nums) => {
 //   let max = 0 // 目前可达最远的距离
@@ -48,4 +48,4 @@ var jump = function(nums) {
 //   }
 //   return step
 // }
-console.log(jump([2,3,1,1,4]))
+console.log(jump([2, 3, 1, 1, 4]));
