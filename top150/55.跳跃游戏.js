@@ -19,7 +19,7 @@ var canJump = function (nums) {
   let farthest = 0; // 用于记录最远可达距离
   for (let i = 0; i < len - 1; i++) {
     farthest = Math.max(farthest, i + nums[i]); // 计算当前一步最远可达哪个位置
-    if (farthest <= i) break;
+    if (farthest <= i) break; // 说明从初始位置到这个位置的任意位置都无法到达最后一位
   }
   return farthest >= len - 1; // 判断是否能够到达最后一位
 };
