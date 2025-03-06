@@ -1,4 +1,5 @@
 /* 
+设计 数组 哈希表 数学 随机化
 实现RandomizedSet 类：
 RandomizedSet() 初始化 RandomizedSet 对象
 bool insert(int val) 当元素 val 不存在时，向集合中插入该项，并返回 true ；否则，返回 false 。
@@ -22,24 +23,24 @@ randomizedSet.remove(1); // 从集合中移除 1 ，返回 true 。集合现在�
 randomizedSet.insert(2); // 2 已在集合中，所以返回 false 。
 randomizedSet.getRandom(); // 由于 2 是集合中唯一的数字，getRandom 总是返回 2 。
 */
-var RandomizedSet = function() {
-  this.data = []
-  this.valToIndex = new Map()
+var RandomizedSet = function () {
+  this.data = [];
+  this.valToIndex = new Map();
 };
-RandomizedSet.prototype.insert = function(val) {
-  if (this.valToIndex.has(val)) return false
-  this.data.push(val)
-  this.valToIndex.set(val, this.data.length)
-  return true
+RandomizedSet.prototype.insert = function (val) {
+  if (this.valToIndex.has(val)) return false;
+  this.data.push(val);
+  this.valToIndex.set(val, this.data.length);
+  return true;
 };
-RandomizedSet.prototype.remove = function(val) {
-  if (!this.valToIndex.has(val)) return false
-  const index = this.valToIndex.get(val)
-  this.data.splice(index, 1)
-  this.valToIndex.delete(val)
-  return true
+RandomizedSet.prototype.remove = function (val) {
+  if (!this.valToIndex.has(val)) return false;
+  const index = this.valToIndex.get(val);
+  this.data.splice(index, 1);
+  this.valToIndex.delete(val);
+  return true;
 };
-RandomizedSet.prototype.getRandom = function() {
-  const idx = Math.floor(Math.random() * this.data.length)
-  return this.data[idx]
+RandomizedSet.prototype.getRandom = function () {
+  const idx = Math.floor(Math.random() * this.data.length);
+  return this.data[idx];
 };
